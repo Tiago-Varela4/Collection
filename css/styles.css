@@ -22,6 +22,11 @@ body {
   text-align: center;
 }
 
+#form {
+  background-color: #06063F;
+  font-family: Raleway, Arial, Helvetica, sans-serif;
+}
+
 #list {
   background-color: #06063F;
   display: flex;

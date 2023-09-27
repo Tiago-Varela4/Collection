@@ -1,8 +1,3 @@
-<?php
-
-require_once 'database.php';
-require_once 'showCollection.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,45 +19,23 @@ require_once 'showCollection.php';
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
-
 </head>
-
 <body>
-
-<header>
-    <div id="toppage">
-        <div id="title">
-            <h1>Collection TV Shows</h1>
-        </div>
-    </div>
-</header>
-
-<a href="newitem.php">New item</a>
-
-<section id="list">
-
-    <?php
-    $items = fetchCollection($pdo);
-
-    $html = showCollection($items);
-
-    echo $html;
-
-    ?>
-
+<section id="form">
+    <h3>New show</h3>
+    <form action="processform.php" method="post">
+        <label for="sname">Show name:</label>
+        <input type="text" id="sname" name="sname"><br><br>
+        <label for="gname">Genre:</label>
+        <input type="text" id="gname" name="gname"><br><br>
+        <label for="ryear">Release Year:</label>
+        <input type="number" id="ryear" name="ryear"><br><br>
+        <label for="image">Image:</label>
+        <input type="text" id="cover" name="cover"><br><br>
+        <label for="alt">Alt message:</label>
+        <input type="text" id="mesage" name="message"><br><br>
+        <button type="submit">Submit</button>
+    </form>
 </section>
-
-<!--<h1>Forms Intro</h1>-->
-
-<!--<form action="processform.php" method="post">-->
-<!--    <label for="integer-input">integer 1:</label>-->
-<!--    <input id="number-input" type="number" name="number1">-->
-<!---->
-<!--    <label for="integer-input">integer 2:</label>-->
-<!--    <input id="number-input" type="number" name="number2">-->
-<!---->
-<!--    <button type="submit">Submit</button>-->
-<!--</form>-->
-
 </body>
 </html>
