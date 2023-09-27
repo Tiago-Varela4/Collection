@@ -28,6 +28,3 @@ function fetchCollection(PDO $pdo): array
 
     return $items;
 }
-
-
-

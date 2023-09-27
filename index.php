@@ -45,7 +45,7 @@ require_once 'showCollection.php';
     $html = showCollection($items);
 
     echo $html;
-    
+
     ?>
 
 </section>
