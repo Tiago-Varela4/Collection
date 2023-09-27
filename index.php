@@ -1,22 +1,7 @@
 <?php
-$host = 'db';
-$db = 'collection';
-$user = 'root';
-$password = 'password';
 
-$dns = "mysql:host=$host;dbname=$db;";
-
-$options = [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-];
-
-try {
-    $pdo = new PDO($dns, $user, $password, $options);
-} catch (PDOException $exception) {
-    echo '<p>There was an error connecting to the db</p>';
-}
-
-
+require_once 'database.php';
+require_once 'showCollection.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,8 +11,8 @@ try {
 
     <title>Collection TV Shows</title>
 
-    <meta name="description" content="Intro to forms with PHP">
-    <meta name="Tiago Varela" content="Collection Project">
+    <meta name="description" content="Collection TV Shows">
+    <meta name="author" content="Tiago Varela">
 
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/styles.css">
@@ -40,7 +25,6 @@ try {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 
-    <!-- <script defer src="js/index.js"></script> -->
 </head>
 
 <body>
@@ -54,28 +38,13 @@ try {
 </header>
 
 <section id="list">
+
     <?php
+    $items = fetchCollection($pdo);
 
+    $html = showCollection($items);
 
-    $query = $pdo->prepare('SELECT `shows`.`name`, `genres`.`name` AS `genre`, `release year`, `image`, `alt` FROM `shows` INNER JOIN `genres` ON `shows`.`genre` = `genres`.`id`;');
-
-    $query->execute();
-
-    $items = $query->fetchALL();
-
-    $html = "";
-    foreach ($items as $item) {
-        $html = '<div class="container">'
-            . '<div style="background-image: url(images/' . $item['image'] . ')" class="item1" title="' . $item['alt'] . '"></div>'
-            . '<p>' . $item['name'] . '</p>'
-            . '<p>' . $item['genre'] . '</p>'
-            . '<p>' . $item['release year'] . '</p>'
-            . '</div> ';
-        echo $html;
-    }
-
-
-
+    echo $html;
 
     ?>
 
