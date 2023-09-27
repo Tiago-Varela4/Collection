@@ -29,12 +29,16 @@ try {
     <meta name="description" content="Intro to forms with PHP">
     <meta name="Tiago Varela" content="Collection Project">
 
-    <!-- <link rel="stylesheet" href="css/normalize.css"> -->
+    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/styles.css">
 
     <link rel="icon" href="images/favicon.png" sizes="192x192">
     <link rel="shortcut icon" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 
     <!-- <script defer src="js/index.js"></script> -->
 </head>
@@ -49,26 +53,30 @@ try {
     </div>
 </header>
 
-<section id="items">
+<section id="list">
     <?php
-    $items = ["test"];
-    $html = "";
-    foreach ($items as $item) {
-        $html = '<div class="item1">'
-            . '<img src="" alt="">'
-            . '</div> ';
-    }
-    echo $html;
 
-    $query = $pdo->prepare('SELECT `shows`.`name`, `genres`.`name` AS `genre`, `release year` FROM `shows` INNER JOIN `genres` ON `shows`.`genre` = `genres`.`id`;');
+
+    $query = $pdo->prepare('SELECT `shows`.`name`, `genres`.`name` AS `genre`, `release year`, `image`, `alt` FROM `shows` INNER JOIN `genres` ON `shows`.`genre` = `genres`.`id`;');
 
     $query->execute();
 
-    $result = $query->fetchALL();
+    $items = $query->fetchALL();
 
-    echo '<pre>';
-    print_r($result);
-    echo '</pre>';
+    $html = "";
+    foreach ($items as $item) {
+        $html = '<div class="container">'
+            . '<div style="background-image: url(images/' . $item['image'] . ')" class="item1" title="' . $item['alt'] . '"></div>'
+            . '<p>' . $item['name'] . '</p>'
+            . '<p>' . $item['genre'] . '</p>'
+            . '<p>' . $item['release year'] . '</p>'
+            . '</div> ';
+        echo $html;
+    }
+
+
+
+
     ?>
 
 </section>
