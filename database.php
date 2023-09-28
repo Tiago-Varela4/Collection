@@ -31,11 +31,11 @@ function fetchCollection(PDO $pdo): array
 function insertItem(PDO $pdo, array $newitem): int
 {
     $insert = $pdo->prepare('INSERT INTO `shows` (`genre`, `name`, `release year`, `image`, `alt`) VALUES (:genre, :name, :releaseYear, :image, :alt)');
-    $insert->bindParam(':genre',$newitem['genre']);
+    $insert->bindParam(':genre', $newitem['genre']);
     $insert->bindParam(':name', $newitem['name']);
-    $insert->bindParam(':releaseYear',$newitem['releaseYear']);
+    $insert->bindParam(':releaseYear', $newitem['releaseYear']);
     $insert->bindParam(':image', $newitem['image']);
-    $insert->bindParam(':alt',$newitem['alt']);
+    $insert->bindParam(':alt', $newitem['alt']);
     $insert->execute();
 
     return $pdo->lastInsertId();
