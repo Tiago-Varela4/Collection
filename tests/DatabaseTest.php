@@ -1,19 +1,14 @@
 <?php
 
+require('../processform.php');
 
-
- require('../processform.php');
- use PHPUnit\Framework\TestCase;
-
-
+use PHPUnit\Framework\TestCase;
 
 class DatabaseTest extends TestCase
 {
-
-
     public function testinvalidYear()
     {
-        $testdata = array ('genre'=>1, 'name'=>'Loki', 'releaseYear'=>'hello');
+        $testdata = array('genre' => 1, 'name' => 'Loki', 'releaseYear' => 'hello');
         $result = validateForm($testdata);
         $this->assertFalse($result);
     }

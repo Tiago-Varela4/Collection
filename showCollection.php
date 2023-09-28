@@ -15,4 +15,3 @@ function showCollection($items)
 
     return $html;
 }
-
