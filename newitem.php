@@ -20,6 +20,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 </head>
+
 <body>
 <section id="form">
     <h3>New show</h3>
@@ -27,7 +28,13 @@
         <label for="sname">Show name:</label>
         <input type="text" id="sname" name="sname"><br><br>
         <label for="gname">Genre:</label>
-        <input type="text" id="gname" name="gname"><br><br>
+        <select id="gname" name="gname">
+            <option value="1">Action</option>
+            <option value="2">Fantasy</option>
+            <option value="3">Comedy</option>
+            <option value="4">Romance</option>
+            <option value="5">Adventure</option>
+        </select><br><br>
         <label for="ryear">Release Year:</label>
         <input type="number" id="ryear" name="ryear"><br><br>
         <label for="image">Image:</label>
