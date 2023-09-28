@@ -22,6 +22,14 @@ body {
   text-align: center;
 }
 
+#form {
+  background-color: #06063F;
+  font-family: Raleway, Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #list {
   background-color: #06063F;
   display: flex;

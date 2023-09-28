@@ -37,6 +37,8 @@ require_once 'showCollection.php';
     </div>
 </header>
 
+<a href="newitem.php">New item</a>
+
 <section id="list">
 
     <?php
@@ -49,18 +51,5 @@ require_once 'showCollection.php';
     ?>
 
 </section>
-
-<!--<h1>Forms Intro</h1>-->
-
-<!--<form action="processform.php" method="post">-->
-<!--    <label for="integer-input">integer 1:</label>-->
-<!--    <input id="number-input" type="number" name="number1">-->
-<!---->
-<!--    <label for="integer-input">integer 2:</label>-->
-<!--    <input id="number-input" type="number" name="number2">-->
-<!---->
-<!--    <button type="submit">Submit</button>-->
-<!--</form>-->
-
 </body>
 </html>
